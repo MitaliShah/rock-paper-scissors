@@ -1,6 +1,7 @@
 "use strict";
 
 // Variables
+const results = document.querySelector("#results");
 let options = ["rock", "paper", "scissors"];
 let wins = {
   rock: "scissors",
@@ -11,12 +12,27 @@ let wins = {
 let play = function (selected) {
   let opponent = getOpponent();
   if (selected === opponent) {
-    // tie
+    renderTie(selected);
   } else if (wins[selected] === opponent) {
-    // The user won
+    renderWin(selected, opponent);
   } else {
-    // The user lost
+    renderLoss(opponent, selected);
   }
+};
+
+let renderTie = function (selected) {
+  results.innerHTML =
+    "<h2>Tie!</h2>" + "<p>You both chose " + selected + "</p>";
+};
+
+let renderWin = function (won, lost) {
+  results.innerHTML =
+    "<h2>You Win!</h2>" + "<p>" + won + " beats " + lost + "</p>";
+};
+
+let renderLoss = function (won, lost) {
+  results.innerHTML =
+    "<h2>You Lost...</h2>" + "<p>" + won + " beats " + lost + "</p>";
 };
 
 // Randomly shuffle an array
@@ -51,7 +67,6 @@ document.addEventListener(
   "click",
   function (event) {
     let selected = event.target.getAttribute("data-rps");
-    console.log(selected);
     if (!selected) return;
     play(selected);
   },
