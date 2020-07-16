@@ -2,14 +2,14 @@
 
 // Variables
 const results = document.querySelector("#results");
-let options = ["rock", "paper", "scissors"];
-let wins = {
+const options = ["rock", "paper", "scissors"];
+const wins = {
   rock: "scissors",
   paper: "rock",
   scissors: "paper",
 };
 
-let play = function (selected) {
+const play = function (selected) {
   let opponent = getOpponent();
   if (selected === opponent) {
     renderTie(selected);
@@ -20,24 +20,27 @@ let play = function (selected) {
   }
 };
 
-let renderTie = function (selected) {
+// Render a "It's a Tie" message
+const renderTie = function (selected) {
   results.innerHTML =
     "<h2>Tie!</h2>" + "<p>You both chose " + selected + "</p>";
 };
 
+// Render a "You Win" message
 let renderWin = function (won, lost) {
   results.innerHTML =
     "<h2>You Win!</h2>" + "<p>" + won + " beats " + lost + "</p>";
 };
 
-let renderLoss = function (won, lost) {
+// Render a "You Lost" message
+const renderLoss = function (won, lost) {
   results.innerHTML =
     "<h2>You Lost...</h2>" + "<p>" + won + " beats " + lost + "</p>";
 };
 
 // Randomly shuffle an array
 
-let shuffle = function (array) {
+const shuffle = function (array) {
   let currentIndex = array.length;
   let temporaryValue, randomIndex;
 
@@ -58,7 +61,7 @@ let shuffle = function (array) {
 
 // Get a random pick for the opponent
 
-let getOpponent = function () {
+const getOpponent = function () {
   return shuffle(options.slice())[0];
 };
 
