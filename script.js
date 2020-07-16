@@ -1,10 +1,22 @@
 "use strict";
 
 // Variables
-var options = ["rock", "paper", "scissors"];
+let options = ["rock", "paper", "scissors"];
+let wins = {
+  rock: "scissors",
+  paper: "rock",
+  scissors: "paper",
+};
 
 let play = function (selected) {
   let opponent = getOpponent();
+  if (selected === opponent) {
+    // tie
+  } else if (wins[selected] === opponent) {
+    // The user won
+  } else {
+    // The user lost
+  }
 };
 
 // Randomly shuffle an array
